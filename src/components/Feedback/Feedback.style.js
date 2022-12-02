@@ -16,7 +16,7 @@ padding: 2rem;
 text-align: center;
 color: #000;
 font-weight: bold;
-font-size: 2.5rem;
+font-size: 16px;
 `;
 
 export const List = styled.ul`

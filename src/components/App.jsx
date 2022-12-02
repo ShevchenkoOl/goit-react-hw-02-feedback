@@ -1,9 +1,10 @@
 import { Component } from 'react';
-import { Container } from "./Feedback/Feedback.style";
+import { Container} from "./Feedback/Feedback.style";
 import { Statistics } from "./Statistics/Statistics";
 import PropTypes from 'prop-types';
-
-const { Feedback } = require("./Feedback/Feedback");
+import { Section } from './Section/Section';
+import { Notification } from './Notification/Notification';
+const { FeedbackOptions } = require("./Feedback/FeedbackOptions");
 
 const options = {
   good: 'good',
@@ -39,11 +40,16 @@ export class App extends Component {
     return (
 <>
 <Container>
-          <Feedback
+<Section title="Please, leave feedback">
+          <FeedbackOptions
             options={options}
             onLeaveFeedback={this.onLeaveFeedback}>
-            </Feedback>
-
+            </FeedbackOptions>
+</Section>
+<Section title="Statistics">
+{!total ? (
+            <Notification message="There is no feedback" />
+          ) : (
           <Statistics
           good={good}
           neutral={neutral}
@@ -51,6 +57,8 @@ export class App extends Component {
           total={total}
           positivePercentage={this.countPositiveFeedbackPercentage()}
         ></Statistics>
+          )}
+</Section>
         </Container>
 </>
     );

@@ -1,13 +1,11 @@
 
 // import PropTypes from 'prop-types'
-import {  Title,
-          List,
+import {  List,
           Button
         } from "./Feedback.style";
 
-export const Feedback = (el) => (
+export const FeedbackOptions = (el) => (
     <div>
-      <Title>Please, leave feedback</Title>
       <List>
         <li>
         <Button onClick={el.onLeaveFeedback(el.options.good)} type="button">Good</Button>
@@ -19,7 +17,6 @@ export const Feedback = (el) => (
         <Button onClick={el.onLeaveFeedback(el.options.bad)} type="button">Bad</Button>
         </li>
       </List>
-      <Title>Statistics</Title>
 
       {/* function Statistics({ good, neutral, bad, total, positivePercentage }) {
   return (
