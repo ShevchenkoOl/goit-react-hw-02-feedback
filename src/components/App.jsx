@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { Container} from "./Feedback/Feedback.style";
 import { Statistics } from "./Statistics/Statistics";
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import { Section } from './Section/Section';
 import { Notification } from './Notification/Notification';
 const { FeedbackOptions } = require("./Feedback/FeedbackOptions");
@@ -31,7 +31,7 @@ export class App extends Component {
   }
 
   countPositiveFeedbackPercentage() {
-    return ((this.state.good / this.countTotalFeedback()) * 100).toFixed(1);
+    return ((this.state.good / this.countTotalFeedback()) * 100).toFixed(0);
   }
 
   render() {
@@ -65,13 +65,13 @@ export class App extends Component {
   };}
 
 
-  App.protoType = {
-    options: PropTypes.oneOf(['good', 'neutral', 'bad']),
+  // App.protoType = {
+  //   options: PropTypes.oneOf(['good', 'neutral', 'bad']),
   
-    good: PropTypes.number.isRequired,
-    neutral: PropTypes.number.isRequired,
-    bad: PropTypes.number.isRequired,
-    positivePercentage: PropTypes.number.isRequired,
-    total: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-     };
+  //   good: PropTypes.number.isRequired,
+  //   neutral: PropTypes.number.isRequired,
+  //   bad: PropTypes.number.isRequired,
+  //   positivePercentage: PropTypes.number.isRequired,
+  //   total: PropTypes.number.isRequired,
+  //   title: PropTypes.string.isRequired,
+  //    };

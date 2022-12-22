@@ -4,17 +4,17 @@ import {  List,
           Button
         } from "./Feedback.style";
 
-export const FeedbackOptions = (el) => (
+export const FeedbackOptions = (props) => (
     <div>
       <List>
         <li>
-        <Button onClick={el.onLeaveFeedback(el.options.good)} type="button">Good</Button>
+        <Button onClick={props.onLeaveFeedback(props.options.good)} type="button">Good</Button>
         </li>
         <li>
-        <Button onClick={el.onLeaveFeedback(el.options.neutral)} type="button">Neutral</Button>
+        <Button onClick={props.onLeaveFeedback(props.options.neutral)} type="button">Neutral</Button>
         </li>
         <li>
-        <Button onClick={el.onLeaveFeedback(el.options.bad)} type="button">Bad</Button>
+        <Button onClick={props.onLeaveFeedback(props.options.bad)} type="button">Bad</Button>
         </li>
       </List>
 
