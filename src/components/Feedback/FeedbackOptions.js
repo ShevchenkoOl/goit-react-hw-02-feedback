@@ -1,12 +1,20 @@
 
-// import PropTypes from 'prop-types'
-import {  List,
+import PropTypes from 'prop-types'
+import {  
           Button
         } from "./Feedback.style";
 
-export const FeedbackOptions = (props) => (
+export const FeedbackOptions = ({ options, onLeaveFeedback }) => (
     <div>
-      <List>
+      {options.map((option, index) => (
+      <Button
+        key={index}
+        onClick={() => onLeaveFeedback(option)}
+      >
+        {option}
+      </Button>
+    ))}
+      {/* <List>
         <li>
         <Button onClick={props.onLeaveFeedback(props.options.good)} type="button">Good</Button>
         </li>
@@ -16,7 +24,7 @@ export const FeedbackOptions = (props) => (
         <li>
         <Button onClick={props.onLeaveFeedback(props.options.bad)} type="button">Bad</Button>
         </li>
-      </List>
+      </List> */}
 
       {/* function Statistics({ good, neutral, bad, total, positivePercentage }) {
   return (
@@ -41,5 +49,8 @@ export const FeedbackOptions = (props) => (
     </div>
   );
 
-
+  FeedbackOptions.propTypes = {
+    options: PropTypes.arrayOf(PropTypes.string).isRequired,
+    onLeaveFeedback: PropTypes.func.isRequired,
+  };
 

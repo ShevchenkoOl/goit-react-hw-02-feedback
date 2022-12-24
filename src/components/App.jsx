@@ -37,13 +37,13 @@ export class App extends Component {
   render() {
     const total = this.countTotalFeedback();
     const { good, neutral, bad } = this.state;
-    const optionKey = Object.keys(this.state);
+    //const optionKey = Object.keys(this.state);
     return (
 <>
 <Container>
 <Section title="Please, leave feedback">
           <FeedbackOptions
-            options={optionKey}
+            options={option}
             onLeaveFeedback={this.onLeaveFeedback}>
             </FeedbackOptions>
 </Section>
