@@ -6,20 +6,20 @@ import { Section } from './Section/Section';
 import { Notification } from './Notification/Notification';
 const { FeedbackOptions } = require("./Feedback/FeedbackOptions");
 
-const options = {
+
+const option = {
   good: 'good',
   neutral: 'neutral',
   bad: 'bad',
 };
+
 export class App extends Component {
   state = {
     good: 0,
     neutral: 0,
     bad: 0,
   };
-  // static PropTypes ={
-
-  // }
+  
   onLeaveFeedback = option => () => {
     this.setState({
       [option]: this.state[option] + 1,
@@ -37,12 +37,13 @@ export class App extends Component {
   render() {
     const total = this.countTotalFeedback();
     const { good, neutral, bad } = this.state;
+    const optionKey = Object.keys(this.state);
     return (
 <>
 <Container>
 <Section title="Please, leave feedback">
           <FeedbackOptions
-            options={options}
+            options={optionKey}
             onLeaveFeedback={this.onLeaveFeedback}>
             </FeedbackOptions>
 </Section>
