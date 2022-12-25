@@ -1,17 +1,9 @@
 import { Component } from 'react';
 import { Container} from "./Feedback/Feedback.style";
 import { Statistics } from "./Statistics/Statistics";
-//import PropTypes from 'prop-types';
 import { Section } from './Section/Section';
 import { Notification } from './Notification/Notification';
-const { FeedbackOptions } = require("./Feedback/FeedbackOptions");
-
-
-const option = {
-  good: 'good',
-  neutral: 'neutral',
-  bad: 'bad',
-};
+import { FeedbackOptions } from './Feedback/FeedbackOptions';
 
 export class App extends Component {
   state = {
@@ -20,11 +12,14 @@ export class App extends Component {
     bad: 0,
   };
   
-  onLeaveFeedback = option => () => {
-    this.setState({
-      [option]: this.state[option] + 1,
+  leaveFeedback = name => () => {
+    this.setState(lastState =>{
+      return {
+      [name]: lastState[name] + 1,
+      };
     });
   };
+
   countTotalFeedback() {
     const { good, neutral, bad } = this.state;
     return good + neutral + bad;
@@ -35,44 +30,37 @@ export class App extends Component {
   }
 
   render() {
-    const total = this.countTotalFeedback();
-    const { good, neutral, bad } = this.state;
-    //const optionKey = Object.keys(this.state);
+   
     return (
-<>
 <Container>
-<Section title="Please, leave feedback">
+  <Section title="Please, leave feedback">
           <FeedbackOptions
-            options={option}
-            onLeaveFeedback={this.onLeaveFeedback}>
-            </FeedbackOptions>
-</Section>
-<Section title="Statistics">
-{!total ? (
-            <Notification message="There is no feedback" />
-          ) : (
-          <Statistics
-          good={good}
-          neutral={neutral}
-          bad={bad}
-          total={total}
+            options={Object.keys(this.state)}
+            onLeaveFeedback={this.leaveFeedback}
+          />
+  </Section>
+ 
+
+  {this.countTotalFeedback() > 0 ? (
+    
+    <Section title="Statistics">
+    <Statistics
+          good={this.state.good}
+          neutral={this.state.neutral}
+          bad={this.state.bad}
+          total={this.countTotalFeedback()}
           positivePercentage={this.countPositiveFeedbackPercentage()}
-        ></Statistics>
+        />
+     </Section>
+            
+          ) : (
+            <Notification message="There is no feedback" />
           )}
-</Section>
-        </Container>
-</>
-    );
-  };}
-
-
-  // App.protoType = {
-  //   options: PropTypes.oneOf(['good', 'neutral', 'bad']),
   
-  //   good: PropTypes.number.isRequired,
-  //   neutral: PropTypes.number.isRequired,
-  //   bad: PropTypes.number.isRequired,
-  //   positivePercentage: PropTypes.number.isRequired,
-  //   total: PropTypes.number.isRequired,
-  //   title: PropTypes.string.isRequired,
-  //    };
+
+</Container>
+);
+   };}
+
+
+   export default App;
