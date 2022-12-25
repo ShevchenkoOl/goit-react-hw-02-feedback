@@ -12,17 +12,18 @@ export class App extends Component {
     bad: 0,
   };
   
-  leaveFeedback = name => () => {
-    this.setState(lastState =>{
+  leaveFeedback = name => {
+    this.setState(lastState => {
       return {
       [name]: lastState[name] + 1,
       };
     });
   };
 
-  countTotalFeedback() {
+  countTotalFeedback = () => {
     const { good, neutral, bad } = this.state;
-    return good + neutral + bad;
+    const totalFeedback = good +neutral + bad;
+    return totalFeedback;
   }
 
   countPositiveFeedbackPercentage() {
@@ -56,11 +57,10 @@ export class App extends Component {
           ) : (
             <Notification message="There is no feedback" />
           )}
-  
-
 </Container>
 );
-   };}
+   }
+  }
 
 
    export default App;

@@ -1,4 +1,5 @@
 
+//import { Component } from 'react';
 import PropTypes from 'prop-types'
 import {  List,
           Button
@@ -21,7 +22,7 @@ return (
     
     </List>
   );
-    }
+    };
 
 export default FeedbackOptions;
 
